@@ -1,0 +1,41 @@
+# A basic Node data structure here
+class Node:
+    def __init__(self, value, link_node = None):
+        self.value = value
+        self.link_node = link_node
+        self.link_nodes = []
+        
+        
+
+    def set_new_link(self, new_node):
+        self.link_node = new_node
+        self.link_nodes.append(self.link_node)
+        return self.link_nodes
+
+    def get_value_node(self):
+        return self.value
+
+    def get_link_node(self, node = None):
+        if node != None:
+            self.link_node = self.link_nodes[self.link_nodes.index(node)]
+            return self.link_node
+        else:
+            return self.link_node
+
+# Creating instances of the nodes
+name = Node('Andrew')
+age = Node(26)
+country = Node('USA')
+
+# Creating first connection with the nodes
+name.set_new_link(age)
+
+# Second connection, name now has 2 node attached
+name.set_new_link(country)
+
+# We can get data in age via name node
+age_data = name.get_link_node(age).get_value_node()
+country_data = name.get_link_node(country).get_value_node()
+
+print(age_data)
+print(country_data)
